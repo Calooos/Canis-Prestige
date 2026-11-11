@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canis Prestige | Guardería y Adiestramiento Canino</title>
+  <meta name="description" content="Guardería canina de prestigio nacional. Cuidado diario, adiestramiento profesional y baños. Agenda la estadía de tu perro." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f3ec;
+      --cream-dark: #efe8dc;
+      --ink: #1c1917;
+      --muted: #6b6560;
+      --forest: #2f4a3c;
+      --forest-deep: #1e3228;
+      --sage: #5a7a68;
+      --gold: #b8956c;
+      --gold-soft: #d4bc9a;
+      --white: #ffffff;
+      --line: rgba(28, 25, 23, 0.08);
+      --radius: 16px;
+      --shadow: 0 18px 50px rgba(28, 25, 23, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(247, 243, 236, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; gap: 16px;
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem; font-weight: 600;
+      letter-spacing: 0.04em; color: var(--forest-deep);
+      line-height: 1.1;
+    }
+    .logo span {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-top: 2px;
+    }
+    .nav-links {
+      display: flex; gap: 26px; list-style: none;
+      font-size: 0.88rem; font-weight: 500; color: var(--muted);
+    }
+    .nav-links a:hover { color: var(--forest); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 0.88rem;
+      border: none; cursor: pointer; transition: 0.25s; font-family: inherit;
+    }
+    .btn-primary {
+      background: var(--forest); color: var(--white);
+      box-shadow: 0 10px 28px rgba(47, 74, 60, 0.22);
+    }
+    .btn-primary:hover { background: var(--forest-deep); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--forest);
+      border: 1.5px solid rgba(47, 74, 60, 0.28);
+    }
+    .btn-outline:hover { border-color: var(--forest); background: rgba(47, 74, 60, 0.05); }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--ink); }
+
+    /* Hero */
+    .hero {
+      padding: 72px 0 64px;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 10%, rgba(184, 149, 108, 0.12), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(47, 74, 60, 0.08), transparent 50%),
+        var(--cream);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center;
+    }
+    .eyebrow {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 600; line-height: 1.12; color: var(--forest-deep);
+      margin-bottom: 16px;
+    }
+    .hero h1 em { font-style: italic; color: var(--sage); }
+    .hero-lead {
+      font-size: 1.05rem; color: var(--muted); max-width: 480px;
+      font-weight: 300; margin-bottom: 28px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .trust-row {
+      display: flex; gap: 22px; flex-wrap: wrap;
+      font-size: 0.82rem; color: var(--muted); font-weight: 500;
+    }
+    .trust-row strong { display: block; color: var(--forest-deep); font-size: 1.15rem; font-weight: 700; }
+    .hero-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 28px 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+    .hero-card .icon-row {
+      width: 64px; height: 64px; border-radius: 18px;
+      background: linear-gradient(145deg, var(--forest), var(--sage));
+      display: grid; place-items: center; color: white; font-size: 1.6rem;
+      margin-bottom: 18px;
+    }
+    .hero-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.45rem; font-weight: 600; margin-bottom: 8px; color: var(--forest-deep);
+    }
+    .hero-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 18px; }
+    .hero-card ul { list-style: none; display: grid; gap: 8px; }
+    .hero-card li {
+      font-size: 0.88rem; color: var(--ink); font-weight: 500;
+      padding-left: 22px; position: relative;
+    }
+    .hero-card li::before {
+      content: '✓'; position: absolute; left: 0; color: var(--forest); font-weight: 700;
+    }
+
+    /* Sections */
+    section { padding: 72px 0; }
+    .section-label {
+      text-align: center; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem); font-weight: 600;
+      text-align: center; color: var(--forest-deep); margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center; color: var(--muted); max-width: 520px;
+      margin: 0 auto 40px; font-size: 0.98rem; font-weight: 300;
+    }
+
+    /* About / trust */
+    .about-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .about-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 26px 22px;
+      transition: 0.25s;
+    }
+    .about-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .about-card .num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem; color: var(--gold); font-weight: 600; margin-bottom: 8px;
+    }
+    .about-card h3 {
+      font-size: 1.05rem; color: var(--forest-deep); margin-bottom: 8px; font-weight: 600;
+    }
+    .about-card p { font-size: 0.9rem; color: var(--muted); font-weight: 300; }
+
+    /* Services */
+    #servicios { background: var(--cream-dark); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .service-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 20px; padding: 28px 24px;
+      display: flex; flex-direction: column;
+      transition: 0.25s;
+    }
+    .service-card:hover {
+      border-color: rgba(47, 74, 60, 0.25);
+      box-shadow: var(--shadow);
+    }
+    .service-card .emoji {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: rgba(47, 74, 60, 0.08);
+      display: grid; place-items: center; font-size: 1.3rem; margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--forest-deep); margin-bottom: 8px;
+    }
+    .service-card p {
+      font-size: 0.9rem; color: var(--muted); font-weight: 300;
+      flex: 1; margin-bottom: 18px;
+    }
+    .price-list { display: grid; gap: 8px; margin-bottom: 18px; }
+    .price-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 10px; font-size: 0.88rem;
+      padding-bottom: 8px; border-bottom: 1px solid var(--line);
+    }
+    .price-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .price-row span { color: var(--muted); }
+    .price-row strong {
+      color: var(--forest-deep); font-weight: 600; white-space: nowrap;
+    }
+    .service-card .btn { width: 100%; margin-top: auto; }
+
+    /* Process */
+    .steps {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    }
+    .step {
+      text-align: center; padding: 20px 14px;
+    }
+    .step-n {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--forest); color: white;
+      display: grid; place-items: center; margin: 0 auto 12px;
+      font-weight: 700; font-size: 0.9rem;
+    }
+    .step h3 { font-size: 0.98rem; margin-bottom: 6px; color: var(--forest-deep); }
+    .step p { font-size: 0.84rem; color: var(--muted); font-weight: 300; }
+
+    /* Booking */
+    #agenda {
+      background: linear-gradient(165deg, var(--forest-deep) 0%, var(--forest) 100%);
+      color: var(--cream);
+    }
+    #agenda .section-label { color: var(--gold-soft); }
+    #agenda .section-title { color: var(--white); }
+    #agenda .section-sub { color: rgba(247, 243, 236, 0.72); }
+    .booking-box {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 22px; padding: 32px 28px;
+      max-width: 640px; margin: 0 auto;
+      backdrop-filter: blur(8px);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block; font-size: 0.72rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(247, 243, 236, 0.65);
+      margin-bottom: 6px; font-weight: 500;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 13px 14px; border-radius: 12px;
+      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.2); color: var(--white);
+      font: inherit; font-size: 0.95rem; outline: none; transition: 0.2s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.35); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold-soft);
+      background: rgba(0, 0, 0, 0.28);
+    }
+    .form-group select option { background: #1e3228; color: white; }
+    .form-group textarea { min-height: 90px; resize: vertical; }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: var(--forest-deep); width: 100%; margin-top: 6px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+    .btn-gold:hover { filter: brightness(1.05); transform: translateY(-2px); }
+    .booking-note {
+      text-align: center; font-size: 0.82rem;
+      color: rgba(247, 243, 236, 0.55); margin-top: 14px;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .contact-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 28px 24px;
+    }
+    .contact-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem; color: var(--forest-deep); margin-bottom: 14px; font-weight: 600;
+    }
+    .contact-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 8px; }
+    .contact-card .detail { color: var(--ink); font-weight: 500; }
+    .contact-card a.detail:hover { color: var(--forest); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0 28px; text-align: center;
+    }
+    footer .logo-foot {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem; color: var(--forest-deep); margin-bottom: 6px;
+    }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .hero-grid, .about-grid, .services-grid, .contact-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .steps { grid-template-columns: 1fr; }
+      .hero { padding: 48px 0 40px; }
+      section { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="logo">
+        Canis Prestige
+        <span>Guardería · Adiestramiento</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#agenda">Agendar</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a href="#agenda" class="btn btn-primary">Agendar cita</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Reconocimiento nacional · Cuidado de excelencia</div>
+          <h1>El hogar que tu perro <em>merece</em>, con adiestramiento de verdad</h1>
+          <p class="hero-lead">
+            Guardería canina de prestigio donde el bienestar, la seguridad y el aprendizaje
+            van de la mano. Atención personalizada, protocolos claros y un equipo profesional.
+          </p>
+          <div class="hero-actions">
+            <a href="#agenda" class="btn btn-primary">Agendar a mi perro</a>
+            <a href="#servicios" class="btn btn-outline">Ver servicios y precios</a>
+          </div>
+          <div class="trust-row">
+            <div><strong>+12 años</strong> de experiencia</div>
+            <div><strong>100%</strong> supervisión diaria</div>
+            <div><strong>Adiestramiento</strong> profesional</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="icon-row">🐾</div>
+          <h3>Más que una guardería</h3>
+          <p>Un espacio diseñado para que tu compañero esté seguro, estimulado y en buenas manos.</p>
+          <ul>
+            <li>Grupos por tamaño y temperamento</li>
+            <li>Rutinas de ejercicio y descanso</li>
+            <li>Adiestramiento con métodos positivos</li>
+            <li>Baños y cuidados especiales</li>
+            <li>Informes claros a los tutores</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros">
+      <div class="container">
+        <div class="section-label">Confianza</div>
+        <h2 class="section-title">Por qué familias de todo el país nos eligen</h2>
+        <p class="section-sub">
+          Combinamos rigor profesional con un trato cálido. Cada detalle está pensado para transmitir tranquilidad.
+        </p>
+        <div class="about-grid">
+          <article class="about-card">
+            <div class="num">01</div>
+            <h3>Seguridad primero</h3>
+            <p>Instalaciones controladas, supervisión continua y protocolos de ingreso, salud y convivencia.</p>
+          </article>
+          <article class="about-card">
+            <div class="num">02</div>
+            <h3>Equipo certificado</h3>
+            <p>Educadores y cuidadores con formación en comportamiento canino y bienestar animal.</p>
+          </article>
+          <article class="about-card">
+            <div class="num">03</div>
+            <h3>Comunicación clara</h3>
+            <p>Te contamos cómo pasó el día de tu perro. Sin sorpresas: transparencia en cada servicio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-label">Nuestros servicios</div>
+        <h2 class="section-title">Cuidado, adiestramiento y bienestar</h2>
+        <p class="section-sub">
+          Precios orientativos en pesos colombianos. Confirmamos disponibilidad y detalle al agendar.
+        </p>
+        <div class="services-grid">
+          <!-- Guardería -->
+          <article class="service-card">
+            <div class="emoji">🏠</div>
+            <h3>Guardería diurna</h3>
+            <p>Juego supervisado, socialización y descanso en un entorno seguro mientras tú trabajas o viajas.</p>
+            <div class="price-list">
+              <div class="price-row"><span>Día completo (8 h)</span><strong>$45.000</strong></div>
+              <div class="price-row"><span>Medio día (4 h)</span><strong>$28.000</strong></div>
+              <div class="price-row"><span>Paquete 5 días</span><strong>$200.000</strong></div>
+              <div class="price-row"><span>Paquete 10 días</span><strong>$380.000</strong></div>
+            </div>
+            <a href="#agenda" class="btn btn-primary" onclick="preselect('Guardería diurna')">Agendar guardería</a>
+          </article>
+
+          <!-- Adiestramiento -->
+          <article class="service-card">
+            <div class="emoji">🎓</div>
+            <h3>Adiestramiento profesional</h3>
+            <p>Obediencia básica y avanzada, manejo de conductas y refuerzo positivo con plan personalizado.</p>
+            <div class="price-list">
+              <div class="price-row"><span>Sesión individual (1 h)</span><strong>$90.000</strong></div>
+              <div class="price-row"><span>Paquete 4 sesiones</span><strong>$320.000</strong></div>
+              <div class="price-row"><span>Paquete 8 sesiones</span><strong>$580.000</strong></div>
+              <div class="price-row"><span>Evaluación inicial</span><strong>$60.000</strong></div>
+            </div>
+            <a href="#agenda" class="btn btn-primary" onclick="preselect('Adiestramiento profesional')">Agendar adiestramiento</a>
+          </article>
+
+          <!-- Baños y cuidados -->
+          <article class="service-card">
+            <div class="emoji">🛁</div>
+            <h3>Baños y cuidados</h3>
+            <p>Higiene completa, secado profesional y detalles de confort según tamaño y tipo de pelaje.</p>
+            <div class="price-list">
+              <div class="price-row"><span>Baño raza pequeña</span><strong>$35.000</strong></div>
+              <div class="price-row"><span>Baño raza mediana</span><strong>$45.000</strong></div>
+              <div class="price-row"><span>Baño raza grande</span><strong>$60.000</strong></div>
+              <div class="price-row"><span>Baño + corte de uñas</span><strong>+$12.000</strong></div>
+            </div>
+            <a href="#agenda" class="btn btn-primary" onclick="preselect('Baño y cuidados')">Agendar baño</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proceso -->
+    <section id="proceso">
+      <div class="container">
+        <div class="section-label">Así trabajamos</div>
+        <h2 class="section-title">Agendar es simple</h2>
+        <p class="section-sub">Cuatro pasos claros para que tu perro empiece con nosotros sin complicaciones.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <h3>Elige el servicio</h3>
+            <p>Guardería, adiestramiento, baño o una combinación según lo que necesites.</p>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <h3>Completa la agenda</h3>
+            <p>Datos tuyos, de tu perro, fecha preferida y cualquier detalle importante.</p>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <h3>Confirmamos por WhatsApp</h3>
+            <p>Te respondemos para validar cupo, horarios y requisitos de vacunas.</p>
+          </div>
+          <div class="step">
+            <div class="step-n">4</div>
+            <h3>Tu perro queda en buenas manos</h3>
+            <p>Recibimiento calmado, rutina cuidada y novedades al final del servicio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agenda -->
+    <section id="agenda">
+      <div class="container">
+        <div class="section-label">Reservas</div>
+        <h2 class="section-title">Agenda a tu perro</h2>
+        <p class="section-sub">Completa el formulario. La solicitud te llega al correo y también puedes confirmar por WhatsApp.</p>
+        <div class="booking-box">
+          <form id="bookingForm" onsubmit="sendBooking(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Tu nombre</label>
+                <input type="text" id="ownerName" name="Tutor" placeholder="Nombre completo" required />
+              </div>
+              <div class="form-group">
+                <label>WhatsApp</label>
+                <input type="tel" id="ownerPhone" name="WhatsApp_cliente" placeholder="300 000 0000" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nombre del perro</label>
+                <input type="text" id="dogName" name="Perro" placeholder="Ej. Luna" required />
+              </div>
+              <div class="form-group">
+                <label>Raza / tamaño</label>
+                <input type="text" id="dogBreed" name="Raza_tamano" placeholder="Ej. Labrador · mediano" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Servicio</label>
+              <select id="service" name="Servicio" required>
+                <option value="">Selecciona un servicio</option>
+                <option>Guardería diurna</option>
+                <option>Adiestramiento profesional</option>
+                <option>Baño y cuidados</option>
+                <option>Guardería + baño</option>
+                <option>Evaluación de adiestramiento</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Fecha preferida</label>
+                <input type="date" id="date" name="Fecha" required />
+              </div>
+              <div class="form-group">
+                <label>Horario preferido</label>
+                <select id="time" name="Hora" required>
+                  <option value="">Elige hora</option>
+                  <option>7:00 a.m.</option>
+                  <option>8:00 a.m.</option>
+                  <option>9:00 a.m.</option>
+                  <option>10:00 a.m.</option>
+                  <option>11:00 a.m.</option>
+                  <option>2:00 p.m.</option>
+                  <option>3:00 p.m.</option>
+                  <option>4:00 p.m.</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Notas (opcional)</label>
+              <textarea id="notes" name="Notas" placeholder="Vacunas, temperamento, alergias, objetivos de adiestramiento…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" id="btnSubmit">Confirmar agenda</button>
+          </form>
+          <p class="booking-note" id="bookingNote">Al enviar: te llega un correo a Gmail con los datos. Cupos sujetos a disponibilidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+      <div class="container">
+        <div class="section-label">Estamos cerca</div>
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-sub">Escríbenos o visítanos. Estamos listos para cuidar a tu perro.</p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Canis Prestige</h3>
+            <p><span class="detail">Pereira, Risaralda</span></p>
+            <p>(Agregar dirección exacta de la sede)</p>
+            <p style="margin-top:14px"><span class="detail">Horario de atención</span></p>
+            <p>Lunes a sábado · 7:00 a.m. – 6:00 p.m.</p>
+            <p style="margin-top:14px"><span class="detail">Correo</span></p>
+            <p><a href="mailto:juandahdez2009@gmail.com" class="detail">juandahdez2009@gmail.com</a></p>
+          </div>
+          <div class="contact-card">
+            <h3>WhatsApp y citas</h3>
+            <p>Para agendar, resolver dudas o confirmar cupos, escríbenos directamente.</p>
+            <p style="margin-top:14px"><span class="detail">324 592 4387</span></p>
+            <p>Línea preferente para reservas</p>
+            <a href="https://wa.me/573245924387" class="btn btn-primary" style="margin-top:20px" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="logo-foot">Canis Prestige</div>
+      <p>Guardería y adiestramiento canino · Cuidado con rigor y calidez · © 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    const WA_NUMBER = '573245924387';
+
+    // Google Sheets conectado
+    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxWYqCFmnpEDLetfaNXJ_SSlD-QY1Gu1d2989TuULasRSo8D5BRcg7TBQaRmkXvq1ya4Q/exec';
+
+    function preselect(service) {
+      const sel = document.getElementById('service');
+      if (!sel) return;
+      for (let i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].text === service || sel.options[i].value === service) {
+          sel.selectedIndex = i;
+          break;
+        }
+      }
+    }
+
+    function openWhatsApp(owner, phone, dog, breed, service, date, time, notes) {
+      let msg = 'Hola Canis Prestige, quiero agendar:%0A%0A';
+      msg += '• Tutor: ' + encodeURIComponent(owner) + '%0A';
+      msg += '• WhatsApp: ' + encodeURIComponent(phone) + '%0A';
+      msg += '• Perro: ' + encodeURIComponent(dog) + '%0A';
+      msg += '• Raza/tamaño: ' + encodeURIComponent(breed) + '%0A';
+      msg += '• Servicio: ' + encodeURIComponent(service) + '%0A';
+      msg += '• Fecha: ' + encodeURIComponent(date) + '%0A';
+      msg += '• Hora: ' + encodeURIComponent(time);
+      if (notes) msg += '%0A• Notas: ' + encodeURIComponent(notes);
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
+    }
+
+    function sendBooking(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSubmit');
+      const note = document.getElementById('bookingNote');
+      const owner = document.getElementById('ownerName').value.trim();
+      const phone = document.getElementById('ownerPhone').value.trim();
+      const dog = document.getElementById('dogName').value.trim();
+      const breed = document.getElementById('dogBreed').value.trim();
+      const service = document.getElementById('service').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const notes = document.getElementById('notes').value.trim();
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+
+      const payload = {
+        _subject: 'Nueva cita Canis Prestige — ' + dog + ' / ' + service,
+        Tutor: owner,
+        WhatsApp_cliente: phone,
+        Perro: dog,
+        Raza_tamano: breed,
+        Servicio: service,
+        Fecha: date,
+        Hora: time,
+        Notas: notes || '(sin notas)'
+      };
+
+      const jobs = [];
+
+      // 1) Correo a Gmail
+      jobs.push(
+        fetch('https://formsubmit.co/ajax/juandahdez2009@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function (r) { return r.json(); })
+      );
+
+      // 2) Fila nueva en Google Sheets
+      if (SHEETS_URL) {
+        jobs.push(
+          fetch(SHEETS_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify(payload)
+          })
+        );
+      }
+
+      Promise.all(jobs)
+        .then(function () {
+          note.textContent = SHEETS_URL
+            ? '✓ Cita enviada: correo + registrada en Google Sheets.'
+            : '✓ Correo enviado. Falta pegar SHEETS_URL para el Excel/Sheets.';
+          openWhatsApp(owner, phone, dog, breed, service, date, time, notes);
+          document.getElementById('bookingForm').reset();
+        })
+        .catch(function () {
+          note.textContent = 'Hubo un problema con el correo. Se abre WhatsApp para no perder la cita.';
+          openWhatsApp(owner, phone, dog, breed, service, date, time, notes);
+        })
+        .finally(function () {
+          btn.disabled = false;
+          btn.textContent = 'Confirmar agenda';
+        });
+    }
+  </script>
+</body>
+</html>
